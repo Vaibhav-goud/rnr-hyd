@@ -360,21 +360,21 @@ html, body {
   flex-direction: row;
   align-items: stretch;
   justify-content: flex-start;
-  padding: 4.5rem 3rem 4.2rem 3rem;
+  padding: 4.2rem 3rem 3.8rem 3rem;
   box-sizing: border-box;
   z-index: 5;
 }
 
 /* Photo column */
 .winner-photo-col {
-  flex: 0 0 40%;
-  max-width: 44%;
+  flex: 0 0 42%;
+  max-width: 46%;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   height: 100%;
   position: relative;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
   box-sizing: border-box;
 }
 
@@ -409,19 +409,22 @@ html, body {
   max-height: 100%;
   max-width: 100%;
   width: auto;
-  height: auto;
+  height: 98%;
   object-fit: contain;
   object-position: bottom center;
   z-index: 3;
-  filter: brightness(1.06) contrast(1.06) drop-shadow(0 12px 50px rgba(0,0,0,0.65));
+  filter: brightness(1.06) contrast(1.06) drop-shadow(0 14px 50px rgba(0,0,0,0.7));
   opacity: 0;
   transition: opacity 0.6s ease;
   display: block;
 }
 .winner-photo.loaded { opacity: 1; }
 .champ-photo {
+  height: 100%;
   max-height: 100%;
-  filter: brightness(1.1) contrast(1.08) drop-shadow(0 12px 70px rgba(201,168,76,0.32));
+  transform: scale(1.06);
+  transform-origin: bottom center;
+  filter: brightness(1.1) contrast(1.08) drop-shadow(0 14px 70px rgba(201,168,76,0.5));
 }
 
 /* Info column */
@@ -760,51 +763,82 @@ html, body {
 .finale-wrap {
   position: relative; width: 100%; height: 100%;
   display: flex; flex-direction: column;
-  align-items: center; justify-content: flex-end;
-  padding-bottom: 4rem; overflow: hidden; z-index: 5;
+  align-items: center; justify-content: center;
+  padding: 4.5rem 2rem 4rem; overflow: hidden; z-index: 5;
+  box-sizing: border-box;
 }
-.finale-header { text-align: center; padding: 1rem 1rem 0.5rem; }
-.finale-eyebrow { font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.46em; color: var(--muted); text-transform: uppercase; }
-.finale-title {
+.finale-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.1rem;
+  max-width: 1000px;
+  position: relative;
+  z-index: 5;
+}
+.finale-trophy-glow {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 45px rgba(240,208,112,0.65));
+  margin-bottom: 0.4rem;
+  animation: floatTrophy 4s ease-in-out infinite;
+}
+@keyframes floatTrophy {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+.finale-trophy-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.finale-eyebrow {
+  font-family: var(--font-body);
+  font-size: clamp(0.75rem, 1.4vw, 0.9rem);
+  letter-spacing: 0.48em;
+  color: var(--gold-a);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.finale-title-big {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 4rem); letter-spacing: 0.08em;
-  background: linear-gradient(135deg, var(--gold-b), #fff8e0);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  font-size: clamp(3.6rem, 8.5vw, 7.2rem);
+  letter-spacing: 0.05em;
+  line-height: 0.92;
+  background: linear-gradient(135deg, #FFFDF0 0%, #F0D070 35%, #C9A84C 75%, #8A641A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 35px rgba(240,208,112,0.55));
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.finale-sub { font-family: var(--font-body); font-size: 0.8rem; color: var(--muted); }
-
-.finale-podium {
-  display: flex; align-items: flex-end; justify-content: center;
-  gap: 1rem; padding: 0 2rem;
-  flex: 1; width: 100%;
+.finale-sub-big {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5.8vw, 4.8rem);
+  letter-spacing: 0.08em;
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFF5CC 50%, #F0D070 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 25px rgba(255,255,255,0.45));
+  margin-top: 0.35rem;
+  display: block;
 }
-.pod-col { display: flex; flex-direction: column; align-items: center; }
-.pod-photo-wrap {
-  width: 90px; height: 110px; overflow: hidden;
-  border-radius: 8px; border: 1px solid rgba(255,255,255,0.12);
+.finale-tagline {
+  font-family: var(--font-body);
+  font-size: clamp(0.85rem, 1.8vw, 1.15rem);
+  color: rgba(255, 255, 255, 0.72);
+  letter-spacing: 0.08em;
+  max-width: 620px;
 }
-.center-pod .pod-photo-wrap { width: 120px; height: 145px; }
-.gold-pod-wrap   { border-color: rgba(201,168,76,0.55); box-shadow: 0 0 30px rgba(201,168,76,0.22); }
-.silver-pod-wrap { border-color: rgba(168,168,176,0.42); }
-.bronze-pod-wrap { border-color: rgba(176,112,48,0.42); }
-.pod-img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
-.pod-crown { margin-bottom: 0.4rem; filter: drop-shadow(0 0 14px rgba(201,168,76,0.65)); }
-.pod-info  { text-align: center; margin: 0.4rem 0; }
-.pod-name  { font-family: var(--font-head); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; color: var(--text); }
-.gold-pod-name { color: var(--gold-b); }
-.pod-stat  { font-family: var(--font-body); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.08em; }
-.gold-pod-stat { color: rgba(201,168,76,0.8); font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; }
-
-.pod-block {
-  min-width: 90px; border-radius: 5px 5px 0 0;
-  display: flex; flex-direction: column; align-items: center;
-  justify-content: flex-start; padding: 0.6rem 0.5rem 0;
-}
-.center-pod .pod-block { min-width: 120px; min-height: 90px; }
-.gold-pod   { background: linear-gradient(180deg, #8B6914, #6B4E0A); min-height: 80px; }
-.silver-pod { background: linear-gradient(180deg, #606068, #484850); min-height: 55px; }
-.bronze-pod { background: linear-gradient(180deg, #6B3810, #4B280A); min-height: 38px; }
-.pod-num { font-family: var(--font-num); font-size: 1.4rem; color: rgba(255,255,255,0.88); }
 
 /* ========================= SLIDE DOTS ========================= */
 #slide-dots {
@@ -899,10 +933,11 @@ html, body {
   .metric-num { font-size: clamp(2.2rem, 7vw, 3.2rem); }
   .stat-row { justify-content: center; gap: 0.45rem; }
   .stat-card { padding: 0.45rem 0.75rem; }
-  .trophy-float { display: none; }
-  .finale-podium { gap: 0.4rem; padding: 0 0.8rem; }
-  .pod-photo-wrap { width: 70px; height: 84px; }
-  .center-pod .pod-photo-wrap { width: 90px; height: 108px; }
+  .finale-center { gap: 0.75rem; padding: 3.8rem 1rem 3.6rem; }
+  .finale-trophy-glow { width: 95px; height: 95px; }
+  .finale-title-big { font-size: clamp(2.4rem, 8vw, 3.8rem); }
+  .finale-sub-big { font-size: clamp(1.6rem, 5.5vw, 2.6rem); }
+  .finale-tagline { font-size: 0.82rem; }
   #global-header { padding: 0.8rem 1.2rem; }
   #global-footer { padding: 0.8rem 1.2rem; }
   .rank-number-bg { font-size: clamp(8rem, 20vw, 14rem); }

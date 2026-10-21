@@ -12,7 +12,7 @@ CustomEase.create('cinematic', 'M0,0 C0.05,0 0.133,0.26 0.24,0.52 C0.348,0.78 0.
    ASSET REGISTRY — Central mapping of winners to photographs
    ================================================================ */
 const ASSET_REGISTRY = {
-  AKSHATA:   { file: 'Akshata.png',    bgType: 'photo',       orientation: 'portrait'  },
+  AKSHATA:   { file: 'Akshata.png',    bgType: 'transparent', orientation: 'full-body' },
   SAHIL:     { file: 'Sahil.png',      bgType: 'transparent', orientation: 'full-body' },
   SIDDHARTH: { file: 'Siddharth.png',  bgType: 'photo',       orientation: 'portrait'  },
   SIDDHESH:  { file: 'Siddhesh.png',   bgType: 'white',       orientation: 'portrait'  },
