@@ -517,7 +517,7 @@ function preloadImg(src) {
 function preloadAll() {
   const winnerFiles = Object.values(ASSET_REGISTRY).map(a => a.file);
   const teamFiles = Object.values(TEAM_LOGOS);
-  const extraFiles = ['trophy.png', 'stage-bg.png'];
+  const extraFiles = ['trophy.png', 'stage-bg.png', 'Hike_Logo.png'];
   const allFiles = Array.from(new Set([...winnerFiles, ...teamFiles, ...extraFiles]));
   return Promise.all(allFiles.map(f => preloadImg(f).catch(() => {})));
 }

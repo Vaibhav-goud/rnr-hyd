@@ -157,6 +157,28 @@ html, body {
 }
 .slide-sep { color: rgba(255,255,255,0.1); }
 #current-slide { color: var(--gold-a); }
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+.header-logo-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.96);
+  padding: 0.32rem 0.85rem;
+  border-radius: 6px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.55), 0 0 12px rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  pointer-events: auto;
+}
+.header-hike-logo {
+  height: clamp(20px, 2.2vw, 28px);
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
 .header-branch {
   font-family: var(--font-head);
   font-size: 0.63rem; font-weight: 600;
@@ -378,21 +400,24 @@ html, body {
   box-sizing: border-box;
 }
 
-/* Rank number background */
+/* Rank number background - Solid rank number */
 .rank-number-bg {
   position: absolute;
   bottom: 0; left: 5%;
   font-family: var(--font-num);
   font-size: clamp(12rem, 28vw, 22rem);
   line-height: 0.8;
-  color: rgba(255, 255, 255, 0.065);
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  opacity: 1 !important;
   z-index: 1;
   user-select: none; pointer-events: none;
-  text-shadow: 0 0 65px rgba(201, 168, 76, 0.12);
+  text-shadow: 0 10px 45px rgba(0, 0, 0, 0.92), 0 0 50px rgba(255, 255, 255, 0.25);
 }
 .gold-rank {
-  color: rgba(201, 168, 76, 0.12);
-  text-shadow: 0 0 85px rgba(201, 168, 76, 0.2);
+  color: #F0D070 !important;
+  -webkit-text-fill-color: #F0D070 !important;
+  text-shadow: 0 10px 45px rgba(0, 0, 0, 0.95), 0 0 60px rgba(240, 208, 112, 0.45);
 }
 .special-rank {
   font-size: 0;
@@ -967,10 +992,12 @@ html, body {
   .finale-sub-big { font-size: clamp(1.6rem, 5.5vw, 2.6rem); }
   .finale-tagline { font-size: 0.82rem; }
   #global-header { padding: 0.8rem 1.2rem; }
+  .header-right { gap: 0.6rem; }
+  .header-logo-pill { padding: 0.22rem 0.55rem; }
+  .header-hike-logo { height: 18px; }
+  .header-branch { font-size: 0.52rem; }
   #global-footer { padding: 0.8rem 1.2rem; }
   .rank-number-bg { font-size: clamp(8rem, 20vw, 14rem); }
-  .top-rank-badge { top: 0.1rem; right: 0.8rem; }
-  .top-rank-num { font-size: clamp(3.8rem, 11vw, 5.5rem); }
 
   /* Team slides responsive */
   .team-stage { gap: 0.5rem; padding: 3.8rem 1rem 3.6rem; }
