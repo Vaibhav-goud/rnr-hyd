@@ -1,0 +1,295 @@
+/* ========================= SPECIAL RECOGNITION SECTION ========================= */
+.recog-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4.2rem 2.5rem 3.8rem;
+  box-sizing: border-box;
+  text-align: center;
+  z-index: 5;
+  gap: 1.2rem;
+}
+
+.recog-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  max-width: 850px;
+}
+
+.recog-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.42em;
+  color: var(--gold-a);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.recog-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.35rem 1.2rem;
+  background: rgba(201, 168, 76, 0.1);
+  border: 1px solid rgba(240, 208, 112, 0.35);
+  border-radius: 30px;
+  backdrop-filter: blur(12px);
+  font-family: var(--font-head);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--gold-b);
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+
+.recog-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  letter-spacing: 0.06em;
+  line-height: 0.95;
+  margin: 0;
+}
+
+.recog-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(0.78rem, 1.3vw, 0.96rem);
+  color: rgba(240, 237, 232, 0.65);
+  letter-spacing: 0.08em;
+  max-width: 650px;
+}
+
+/* Grids */
+.recog-grid {
+  width: 100%;
+  display: grid;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.recog-grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 280px));
+  gap: 1.6rem;
+  max-width: 950px;
+}
+
+.recog-grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 320px));
+  gap: 2.2rem;
+  max-width: 760px;
+}
+
+.recog-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 1.8rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.45);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.recog-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(240, 208, 112, 0.5);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.6), 0 0 30px rgba(240, 208, 112, 0.18);
+}
+
+.recog-card-glow {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 60px;
+  background: radial-gradient(ellipse at center, rgba(240, 208, 112, 0.28) 0%, transparent 70%);
+  filter: blur(15px);
+  pointer-events: none;
+}
+
+.recog-photo-wrap {
+  position: relative;
+  width: 115px;
+  height: 115px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(240, 208, 112, 0.2), rgba(6, 8, 15, 0.85));
+  border: 2px solid rgba(240, 208, 112, 0.55);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 25px rgba(240, 208, 112, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.recog-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.recog-avatar-circle {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.9rem;
+  color: var(--gold-b);
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 15px rgba(240, 208, 112, 0.6);
+}
+
+.recog-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #FFFFFF;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.8);
+  margin: 0;
+}
+
+.recog-role-badge {
+  font-family: var(--font-head);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.95rem;
+  border-radius: 20px;
+  background: rgba(201, 168, 76, 0.12);
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  color: var(--gold-b);
+}
+
+/* Operations Team Specific Layout */
+.recog-ops-container {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.recog-card--leader {
+  background: linear-gradient(135deg, rgba(201, 168, 76, 0.15) 0%, rgba(6, 8, 15, 0.85) 100%);
+  border: 1.5px solid rgba(240, 208, 112, 0.6);
+  padding: 0.9rem 2.4rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.4rem;
+  border-radius: 50px;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.6), 0 0 35px rgba(240, 208, 112, 0.22);
+}
+
+.recog-card--leader .recog-photo-wrap {
+  width: 78px;
+  height: 78px;
+  border-color: #F0D070;
+  box-shadow: 0 0 25px rgba(240, 208, 112, 0.45);
+}
+
+.recog-leader-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  text-align: left;
+}
+
+.recog-leader-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  font-weight: 800;
+  color: #FFFDF0;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.recog-role-badge--leader {
+  font-family: var(--font-head);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.95rem;
+  border-radius: 20px;
+  background: linear-gradient(90deg, rgba(240,208,112,0.3), rgba(201,168,76,0.35));
+  border: 1px solid #F0D070;
+  color: #FFFDF0;
+  box-shadow: 0 0 15px rgba(240,208,112,0.3);
+}
+
+.recog-ops-members {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.85rem;
+  width: 100%;
+}
+
+.recog-card--member {
+  padding: 1.1rem 0.6rem;
+  border-radius: 14px;
+  gap: 0.55rem;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.recog-card--member .recog-photo-wrap {
+  width: 64px;
+  height: 64px;
+  border-width: 1.5px;
+}
+
+.recog-card--member .recog-avatar-circle {
+  font-size: 1.15rem;
+}
+
+.recog-card--member .recog-name {
+  font-size: clamp(0.78rem, 1.1vw, 0.95rem);
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.recog-role-badge--ops {
+  font-size: 0.5rem;
+  letter-spacing: 0.16em;
+  padding: 0.22rem 0.65rem;
+  color: rgba(240, 237, 232, 0.65);
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Digital marketing hero slide */
+.recog-dept-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3.2vw, 2.4rem);
+  letter-spacing: 0.14em;
+  font-weight: 700;
+}
+
+.recog-hero-desc {
+  font-family: var(--font-body);
+  font-size: clamp(0.78rem, 1.25vw, 0.92rem);
+  color: rgba(240, 237, 232, 0.7);
+  max-width: 580px;
+  line-height: 1.45;
+  letter-spacing: 0.04em;
+}
+

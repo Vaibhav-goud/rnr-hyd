@@ -1,0 +1,254 @@
+<!-- SLIDE 26: RECOGNITION — DBMs -->
+    <section class="slide" id="slide-recog-dbm" data-slide="26" data-category="RECOGNITION &bull; DBMs">
+      <div class="slide-bg-img"></div>
+      <div class="slide-overlay"></div>
+      <div class="recog-stage">
+        <div class="recog-header gs-fade-up" data-delay="0">
+          <p class="recog-eyebrow">JULY DRIVE 2026 &bull; LEADERSHIP PILLARS</p>
+          <div class="recog-badge-pill">
+            <svg class="laurel-mini" viewBox="0 0 30 30" width="20" height="20">
+              <g opacity="0.8">
+                <path d="M8 25 Q5 20 4 14 Q3 8 7 5 Q9 10 10 16 Q11 22 8 25Z" fill="#F0D070" />
+                <path d="M6 22 Q2 18 1 12 Q0 6 4 4 Q5 9 7 14 Q9 20 6 22Z" fill="#C9A84C" />
+              </g>
+            </svg>
+            <span>LEADERSHIP PILLARS</span>
+            <svg class="laurel-mini" viewBox="0 0 30 30" width="20" height="20">
+              <g opacity="0.8" transform="scale(-1,1) translate(-30,0)">
+                <path d="M8 25 Q5 20 4 14 Q3 8 7 5 Q9 10 10 16 Q11 22 8 25Z" fill="#F0D070" />
+                <path d="M6 22 Q2 18 1 12 Q0 6 4 4 Q5 9 7 14 Q9 20 6 22Z" fill="#C9A84C" />
+              </g>
+            </svg>
+          </div>
+          <h2 class="recog-title gold-name">DEPUTY BRANCH MANAGERS</h2>
+          <p class="recog-subtitle">Recognizing Strategic Leadership, Continuous Mentorship &amp; Driving Branch Growth
+          </p>
+        </div>
+
+        <div class="recog-grid recog-grid--3 gs-fade-up" data-delay="0.2">
+          <!-- PRATIK -->
+          <div class="recog-card">
+            <div class="recog-card-glow"></div>
+            <div class="recog-photo-wrap">
+              <img src="Pratik.png" alt="Pratik" class="recog-photo" id="photo-pratik" />
+            </div>
+            <h3 class="recog-name">PRATIK</h3>
+            <span class="recog-role-badge">DBM &bull; HYDERABAD</span>
+          </div>
+
+          <!-- SHASHANK -->
+          <div class="recog-card">
+            <div class="recog-card-glow"></div>
+            <div class="recog-photo-wrap">
+              <img src="Shashank.png" alt="Shashank" class="recog-photo" id="photo-shashank" />
+            </div>
+            <h3 class="recog-name">SHASHANK</h3>
+            <span class="recog-role-badge">DBM &bull; MUMBAI</span>
+          </div>
+
+          <!-- ABHISHEK -->
+          <div class="recog-card">
+            <div class="recog-card-glow"></div>
+            <div class="recog-photo-wrap">
+              <img src="Abhishek.png" alt="Abhishek" class="recog-photo" id="photo-abhishek" />
+            </div>
+            <h3 class="recog-name">ABHISHEK</h3>
+            <span class="recog-role-badge">DBM &bull; MUMBAI</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 27: RECOGNITION — OPERATIONS TEAM -->
+    <section class="slide" id="slide-recog-ops" data-slide="27" data-category="RECOGNITION &bull; OPERATIONS">
+      <div class="slide-bg-img"></div>
+      <div class="slide-overlay"></div>
+      <div class="recog-stage">
+        <div class="recog-header gs-fade-up" data-delay="0">
+          <p class="recog-eyebrow">JULY DRIVE 2026 &bull; MUMBAI BRANCH</p>
+          <div class="recog-badge-pill">
+            <svg class="laurel-mini" viewBox="0 0 30 30" width="20" height="20">
+              <g opacity="0.8">
+                <path d="M8 25 Q5 20 4 14 Q3 8 7 5 Q9 10 10 16 Q11 22 8 25Z" fill="#F0D070" />
+                <path d="M6 22 Q2 18 1 12 Q0 6 4 4 Q5 9 7 14 Q9 20 6 22Z" fill="#C9A84C" />
+              </g>
+            </svg>
+            <span>OPERATIONAL EXCELLENCE</span>
+            <svg class="laurel-mini" viewBox="0 0 30 30" width="20" height="20">
+              <g opacity="0.8" transform="scale(-1,1) translate(-30,0)">
+                <path d="M8 25 Q5 20 4 14 Q3 8 7 5 Q9 10 10 16 Q11 22 8 25Z" fill="#F0D070" />
+                <path d="M6 22 Q2 18 1 12 Q0 6 4 4 Q5 9 7 14 Q9 20 6 22Z" fill="#C9A84C" />
+              </g>
+            </svg>
+          </div>
+          <h2 class="recog-title gold-name">OPERATIONS TEAM</h2>
+          <p class="recog-subtitle">The Backbone of Branch Execution, Speed &amp; Flawless Operational Support</p>
+        </div>
+
+        <div class="recog-ops-container gs-fade-up" data-delay="0.18">
+          <!-- TEAM LEADER: KIRAN -->
+          <div class="recog-card recog-card--leader">
+            <div class="recog-photo-wrap">
+              <img src="Kiran.png" alt="Kiran" class="recog-photo" id="photo-kiran-ops" />
+            </div>
+            <div class="recog-leader-info">
+              <span class="recog-role-badge--leader">★ TEAM LEADER ★</span>
+              <h3 class="recog-leader-name">KIRAN</h3>
+            </div>
+          </div>
+
+          <!-- 6 MEMBERS GRID -->
+          <div class="recog-ops-members gs-stagger-cards">
+            <!-- YASHVI -->
+            <div class="recog-card recog-card--member">
+              <div class="recog-photo-wrap">
+                <img src="Yashvi.png" alt="Yashvi" class="recog-photo" id="photo-yashvi" />
+              </div>
+              <h4 class="recog-name">YASHVI</h4>
+              <span class="recog-role-badge recog-role-badge--ops">OPERATIONS</span>
+            </div>
+
+            <!-- PREETIKA -->
+            <div class="recog-card recog-card--member">
+              <div class="recog-photo-wrap">
+                <img src="Preetika.png" alt="Preetika" class="recog-photo" id="photo-preetika" />
+              </div>
+              <h4 class="recog-name">PREETIKA</h4>
+              <span class="recog-role-badge recog-role-badge--ops">OPERATIONS</span>
+            </div>
+
+            <!-- KASHAF -->
+            <div class="recog-card recog-card--member">
+              <div class="recog-photo-wrap">
+                <img src="Kashaf.png" alt="Kashaf" class="recog-photo" id="photo-kashaf" />
+              </div>
+              <h4 class="recog-name">KASHAF</h4>
+              <span class="recog-role-badge recog-role-badge--ops">OPERATIONS</span>
+            </div>
+
+            <!-- SUSMITA -->
+            <div class="recog-card recog-card--member">
+              <div class="recog-photo-wrap">
+                <img src="Susmita.png" alt="Susmita" class="recog-photo" id="photo-susmita" />
+              </div>
+              <h4 class="recog-name">SUSMITA</h4>
+              <span class="recog-role-badge recog-role-badge--ops">OPERATIONS</span>
+            </div>
+
+            <!-- TEJASHREE -->
+            <div class="recog-card recog-card--member">
+              <div class="recog-photo-wrap">
+                <img src="Tejashree.png" alt="Tejashree" class="recog-photo" id="photo-tejashree" />
+              </div>
+              <h4 class="recog-name">TEJASHREE</h4>
+              <span class="recog-role-badge recog-role-badge--ops">OPERATIONS</span>
+            </div>
+
+            <!-- VAIBHAV -->
+            <div class="recog-card recog-card--member">
+              <div class="recog-photo-wrap">
+                <img src="Vaibhav.png" alt="Vaibhav" class="recog-photo" id="photo-vaibhav" />
+              </div>
+              <h4 class="recog-name">VAIBHAV</h4>
+              <span class="recog-role-badge recog-role-badge--ops">OPERATIONS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 28: RECOGNITION — HR TEAM -->
+    <section class="slide" id="slide-recog-hr" data-slide="28" data-category="RECOGNITION &bull; HR TEAM">
+      <div class="slide-bg-img"></div>
+      <div class="slide-overlay"></div>
+      <div class="recog-stage">
+        <div class="recog-header gs-fade-up" data-delay="0">
+          <p class="recog-eyebrow">JULY DRIVE 2026 &bull; MUMBAI BRANCH</p>
+          <div class="recog-badge-pill">
+            <svg class="laurel-mini" viewBox="0 0 30 30" width="20" height="20">
+              <g opacity="0.8">
+                <path d="M8 25 Q5 20 4 14 Q3 8 7 5 Q9 10 10 16 Q11 22 8 25Z" fill="#F0D070" />
+                <path d="M6 22 Q2 18 1 12 Q0 6 4 4 Q5 9 7 14 Q9 20 6 22Z" fill="#C9A84C" />
+              </g>
+            </svg>
+            <span>PEOPLE &amp; CULTURE EXCELLENCE</span>
+            <svg class="laurel-mini" viewBox="0 0 30 30" width="20" height="20">
+              <g opacity="0.8" transform="scale(-1,1) translate(-30,0)">
+                <path d="M8 25 Q5 20 4 14 Q3 8 7 5 Q9 10 10 16 Q11 22 8 25Z" fill="#F0D070" />
+                <path d="M6 22 Q2 18 1 12 Q0 6 4 4 Q5 9 7 14 Q9 20 6 22Z" fill="#C9A84C" />
+              </g>
+            </svg>
+          </div>
+          <h2 class="recog-title gold-name">HUMAN RESOURCES</h2>
+          <p class="recog-subtitle">Empowering People, Driving Talent Acquisition &amp; Nurturing Branch Culture</p>
+        </div>
+
+        <div class="recog-grid recog-grid--2 gs-fade-up" data-delay="0.2">
+          <!-- MANISHA -->
+          <div class="recog-card">
+            <div class="recog-card-glow"></div>
+            <div class="recog-photo-wrap">
+              <img src="Manisha.png" alt="Manisha" class="recog-photo" id="photo-manisha" />
+            </div>
+            <h3 class="recog-name">MANISHA</h3>
+            <span class="recog-role-badge">HR &bull; MUMBAI BRANCH</span>
+          </div>
+
+          <!-- RITIKA -->
+          <div class="recog-card">
+            <div class="recog-card-glow"></div>
+            <div class="recog-photo-wrap">
+              <img src="Ritika.png" alt="Ritika" class="recog-photo" id="photo-ritika" />
+            </div>
+            <h3 class="recog-name">RITIKA</h3>
+            <span class="recog-role-badge">HR &bull; MUMBAI BRANCH</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 29: RECOGNITION — DIGITAL MARKETING -->
+    <section class="slide" id="slide-recog-dm" data-slide="29" data-category="RECOGNITION &bull; DIGITAL MARKETING">
+      <div class="slide-bg-img"></div>
+      <div class="slide-overlay"></div>
+      <div class="winner-stage recog-dm-stage">
+        <div class="winner-photo-col">
+          <div class="rank-number-bg special-rank">
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="#3B82F6" stroke-width="1.5">
+              <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" />
+            </svg>
+          </div>
+          <img src="Aditya.png" alt="Aditya" class="winner-photo attendance-photo" id="photo-aditya-dm" />
+        </div>
+        <div class="winner-info-col">
+          <p class="info-drive-label gs-fade-up" data-delay="0">JULY DRIVE 2026 &bull; MUMBAI BRANCH</p>
+          <div class="rank-label special-label blue-label gs-fade-up" data-delay="0.1">SPECIAL RECOGNITION</div>
+          <h2 class="winner-name gold-name gs-fade-up" data-delay="0.2" id="name-aditya-dm">ADITYA</h2>
+          <div class="recog-dept-headline blue-accent gs-fade-up" data-delay="0.28">DIGITAL MARKETING</div>
+          <p class="recog-hero-desc gs-fade-up" data-delay="0.36">Recognized for driving high-intent digital pipelines,
+            impactful campaign execution, and scaling brand growth across July Drive 2026</p>
+          <div class="stat-row gs-stagger-cards">
+            <div class="stat-card blue-card">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#3B82F6" stroke-width="1.5">
+                  <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" />
+                </svg>
+              </div>
+              <div class="stat-data"><span class="stat-val">LEAD GEN</span><span class="stat-key">DIGITAL
+                  PIPELINE</span></div>
+            </div>
+            <div class="stat-card blue-card">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#3B82F6" stroke-width="1.5">
+                  <path
+                    d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+                </svg>
+              </div>
+              <div class="stat-data"><span class="stat-val">MUMBAI</span><span class="stat-key">BRANCH</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
