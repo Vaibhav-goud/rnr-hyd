@@ -61,6 +61,7 @@ const SLIDE_PHOTOS = {
   28: ['photo-phanindra-att'],
   30: ['photo-pratik-dbm'],
   33: ['photo-aditya-dm'],
+  34: ['photo-vaibhav-created'],
 };
 
 /* ================================================================
@@ -491,13 +492,14 @@ function onSlideEnter(idx) {
     });
   }
 
-  // Particle mode per slide (gold for gold/champ slides, all team slides, and finale)
-  const isGoldSlide = [4, 8, 12, 17, 18, 19, 20, 21, 22, 23, 24, 28, 29, 30, 34].includes(idx) ||
+  // Particle mode per slide (gold for gold/champ slides, all team slides, created by, and finale)
+  const isGoldSlide = [4, 8, 12, 17, 18, 19, 20, 21, 22, 23, 24, 28, 29, 30, 34, 35].includes(idx) ||
                       activeSlide?.classList.contains('gold-winner') ||
                       activeSlide?.querySelector('.gold-winner') ||
                       activeSlide?.querySelector('.champ-winner') ||
                       activeSlide?.querySelector('.gold-theme') ||
                       activeSlide?.querySelector('.champ-theme') ||
+                      activeSlide?.id === 'slide-created-by' ||
                       activeSlide?.id === 'slide-finale';
   if (isGoldSlide) startParticles('gold', (idx === 18 || activeSlide?.id === 'slide-champ') ? 260 : 460);
   else startParticles('ambient', 1100);
@@ -543,7 +545,8 @@ function onSlideEnter(idx) {
     31: ['rgba(0,191,165,0.22)', null],  // Operations Team (Teal)
     32: ['rgba(236,72,153,0.20)', null], // HR Team (Rose Pink)
     33: ['rgba(56,189,248,0.22)', null], // Digital Marketing (Cyan/Sky)
-    34: ['rgba(201,168,76,0.25)', null], // Finale (Gold)
+    34: ['rgba(201,168,76,0.26)', null], // Created By (Gold)
+    35: ['rgba(201,168,76,0.25)', null], // Finale (Gold)
   };
   const aCol = auroraColors[idx];
   const orb1 = document.querySelector('.aurora-orb--1');
@@ -568,7 +571,7 @@ function preloadImg(src) {
 function preloadAll() {
   const winnerFiles = Object.values(ASSET_REGISTRY).map(a => a.file);
   const teamFiles = Object.values(TEAM_LOGOS);
-  const extraFiles = ['trophy.png', 'stage-bg.png', 'Hike_Logo.png'];
+  const extraFiles = ['trophy.png', 'stage-bg.png', 'Hike_Logo.png', 'Vaibhav.jpeg'];
   const allFiles = Array.from(new Set([...winnerFiles, ...teamFiles, ...extraFiles]));
   return Promise.all(allFiles.map(f => preloadImg(f).catch(() => {})));
 }
