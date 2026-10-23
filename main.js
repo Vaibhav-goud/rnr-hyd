@@ -12,17 +12,27 @@ CustomEase.create('cinematic', 'M0,0 C0.05,0 0.133,0.26 0.24,0.52 C0.348,0.78 0.
    ASSET REGISTRY — Central mapping of winners to photographs
    ================================================================ */
 const ASSET_REGISTRY = {
+  PRATIK:    { file: 'Pratik.png',    placeholder: 'Yashpreet.png', bgType: 'transparent', orientation: 'full-body' },
+  PREKSHA:   { file: 'Preksha.png',   placeholder: 'Akshata.png',   bgType: 'transparent', orientation: 'full-body' },
+  PHANINDRA: { file: 'Phanindra.png', placeholder: 'Sahil.png',     bgType: 'transparent', orientation: 'full-body' },
+  PARVATI:   { file: 'Parvati.png',   placeholder: 'Akshata.png',   bgType: 'transparent', orientation: 'full-body' },
+  PARTH:     { file: 'Parth.png',     placeholder: 'Siddharth.png', bgType: 'transparent', orientation: 'full-body' },
+  // Mumbai branch records retained for backward compatibility / fallback
   AKSHATA:   { file: 'Akshata.png',    bgType: 'transparent', orientation: 'full-body' },
   SAHIL:     { file: 'Sahil.png',      bgType: 'transparent', orientation: 'full-body' },
   SIDDHARTH: { file: 'Siddharth.png',  bgType: 'photo',       orientation: 'portrait'  },
   SIDDHESH:  { file: 'Siddhesh.png',   bgType: 'white',       orientation: 'portrait'  },
   YASHPREET: { file: 'Yashpreet.png',  bgType: 'white',       orientation: 'full-body' },
+  ADITYA:    { file: 'Aditya.png',     bgType: 'transparent', orientation: 'full-body' },
+  KIRAN:     { file: 'Kiran.png',      bgType: 'transparent', orientation: 'portrait'  },
 };
 
 /* ================================================================
    TEAM LOGO REGISTRY
    ================================================================ */
 const TEAM_LOGOS = {
+  TEAM_B:  'Team B logo.png',
+  TEAMB:   'Team B logo.png',
   WOLFS:   'Wolf logo.png',
   WOLFVES: 'Wolf logo.png',
   WOLF:    'Wolf logo.png',
@@ -34,15 +44,23 @@ const TEAM_LOGOS = {
    SLIDE → PHOTO MAP
    ================================================================ */
 const SLIDE_PHOTOS = {
-  2:  ['photo-sahil'],
-  3:  ['photo-akshata-adm'],
-  4:  ['photo-yashpreet-adm'],
-  6:  ['photo-siddhesh-pts'],
-  7:  ['photo-yashpreet-pts'],
-  8:  ['photo-akshata-pts'],
-  10: ['photo-siddharth'],
-  12: ['photo-siddhesh-ref'],
-  14: ['photo-akshata-champ'],
+  2:  ['photo-phanindra-adm'],
+  3:  ['photo-preksha-adm'],
+  4:  ['photo-pratik-adm'],
+  6:  ['photo-phanindra-pts'],
+  7:  ['photo-preksha-pts'],
+  8:  ['photo-pratik-pts'],
+  10: ['photo-phanindra-pct'],
+  11: ['photo-preksha-pct'],
+  12: ['photo-pratik-pct'],
+  14: ['photo-phanindra-lead'],
+  16: ['photo-pratik-ref'],
+  18: ['photo-preksha-champ'],
+  26: ['photo-parvati-att'],
+  27: ['photo-parth-att'],
+  28: ['photo-phanindra-att'],
+  30: ['photo-pratik-dbm'],
+  33: ['photo-aditya-dm'],
 };
 
 /* ================================================================
@@ -126,20 +144,22 @@ function drawBg(t) {
   ctx.strokeStyle = 'rgba(201,168,76,0.038)';
   ctx.lineWidth = 0.5;
 
+  ctx.beginPath();
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols - 1; c++) {
       const i = r * cols + c;
       const a = px(i), b = px(i + 1);
-      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+      ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
     }
   }
   for (let r = 0; r < rows - 1; r++) {
     for (let c = 0; c < cols; c++) {
       const i = r * cols + c;
       const a = px(i), b = px(i + cols);
-      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+      ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
     }
   }
+  ctx.stroke();
 
   // Floating stars
   floatStars.forEach(s => {
@@ -147,9 +167,10 @@ function drawBg(t) {
     if (s.a > 0.68 || s.a < 0.04) s.dir *= -1;
     s.y += s.vy;
     if (s.y < -5) { s.y = H + 5; s.x = Math.random() * W; }
+    const alpha = Math.max(0, Math.min(1, s.a));
     ctx.beginPath();
     ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(255,255,255,${s.a.toFixed(2)})`;
+    ctx.fillStyle = `rgba(255,255,255,${alpha.toFixed(2)})`;
     ctx.fill();
   });
 }
@@ -230,6 +251,7 @@ function fireConfetti(id, count = 70) {
    ================================================================ */
 function buildSlideTimeline(slide) {
   const tl = gsap.timeline({ defaults: { ease: 'cinematic' } });
+  slide._timeline = tl;
 
   // Slide panel itself — fade + subtle lift
   tl.fromTo(slide, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.7 }, 0);
@@ -238,8 +260,8 @@ function buildSlideTimeline(slide) {
   slide.querySelectorAll('.gs-fade-up').forEach(el => {
     const delay = parseFloat(el.dataset.delay || '0');
     tl.fromTo(el,
-      { opacity: 0, y: 26, filter: 'blur(4px)' },
-      { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.65 },
+      { opacity: 0, y: 24 },
+      { opacity: 1, y: 0, duration: 0.65 },
       0.1 + delay
     );
   });
@@ -259,7 +281,7 @@ function buildSlideTimeline(slide) {
     tl.fromTo(card,
       { opacity: 0, y: 20, scale: 0.92 },
       { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: 'power3.out' },
-      0.55 + i * 0.08
+      0.45 + i * 0.08
     );
   });
 
@@ -275,11 +297,15 @@ function buildSlideTimeline(slide) {
 
   // Metric number count-up effect via GSAP ticker
   slide.querySelectorAll('.metric-num').forEach(el => {
-    const raw = el.textContent.trim();
+    if (!el.dataset.targetVal) {
+      el.dataset.targetVal = el.textContent.trim();
+    }
+    const raw = el.dataset.targetVal;
     const isPercent = raw.endsWith('%');
     const num = parseFloat(raw.replace('%', ''));
     if (!isNaN(num)) {
       const obj = { val: 0 };
+      el.textContent = isPercent ? '0.00%' : '0';
       tl.to(obj, {
         val: num,
         duration: 1.1,
@@ -289,7 +315,7 @@ function buildSlideTimeline(slide) {
             ? obj.val.toFixed(2) + '%'
             : Number.isInteger(num) ? Math.round(obj.val) : obj.val.toFixed(1);
         },
-      }, 0.55);
+      }, 0.45);
     }
   });
 
@@ -297,14 +323,18 @@ function buildSlideTimeline(slide) {
 }
 
 function playSlideExit(slide) {
+  if (slide._timeline) {
+    slide._timeline.kill();
+    slide._timeline = null;
+  }
   return gsap.to(slide, {
     opacity: 0,
     y: -28,
-    duration: 0.5,
+    duration: 0.45,
     ease: 'power2.in',
     onComplete() {
       slide.classList.remove('active', 'exit');
-      gsap.set(slide, { y: 0, clearProps: 'filter' });
+      gsap.set(slide, { y: 0, clearProps: 'opacity,transform,filter' });
     },
   });
 }
@@ -349,6 +379,10 @@ function goToSlide(idx) {
 
   const oldSlide = slides[currentSlide];
   const newSlide = slides[idx];
+
+  // Stop any active tweens on outgoing slide
+  gsap.killTweensOf(oldSlide);
+  gsap.killTweensOf(oldSlide.querySelectorAll('*'));
 
   oldSlide.classList.add('exit');
   playSlideExit(oldSlide).then(() => {
@@ -396,7 +430,7 @@ document.addEventListener('mousemove', e => {
   const xRatio = (e.clientX / window.innerWidth  - 0.5) * 2;
   const yRatio = (e.clientY / window.innerHeight - 0.5) * 2;
 
-  // Move spotlight
+  // Move spotlight (no CSS transition clash)
   gsap.to('#spotlight', {
     left: e.clientX,
     top: e.clientY,
@@ -404,7 +438,7 @@ document.addEventListener('mousemove', e => {
     ease: 'none',
   });
 
-  // Subtle bg parallax
+  // Subtle bg parallax on active slide
   gsap.to('.slide.active .slide-bg-img', {
     x: xRatio * -10,
     y: yRatio * -10,
@@ -412,9 +446,13 @@ document.addEventListener('mousemove', e => {
     ease: 'power1.out',
   });
 
-  // Aurora orbs subtle follow
-  gsap.to('.aurora-orb--1', { x: xRatio * 20, y: yRatio * 15, duration: 2.5, ease: 'power1.out' });
-  gsap.to('.aurora-orb--2', { x: xRatio * -15, y: yRatio * -12, duration: 3, ease: 'power1.out' });
+  // Aurora layer subtle follow (parent container, avoiding clash with child orb keyframes)
+  gsap.to('#aurora-layer', {
+    x: xRatio * 15,
+    y: yRatio * 12,
+    duration: 2.2,
+    ease: 'power1.out',
+  });
 });
 
 /* ================================================================
@@ -431,8 +469,8 @@ function onSlideEnter(idx) {
       if (!img) return;
       const reveal = () => {
         gsap.fromTo(img,
-          { opacity: 0, scale: 1.04, filter: 'blur(6px)' },
-          { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.9, ease: 'power2.out', delay: 0.35 }
+          { opacity: 0, scale: 1.03 },
+          { opacity: 1, scale: 1, duration: 0.8, ease: 'power2.out', delay: 0.25 }
         );
         img.classList.add('loaded');
       };
@@ -443,8 +481,8 @@ function onSlideEnter(idx) {
     activeSlide.querySelectorAll('.winner-photo').forEach(img => {
       const reveal = () => {
         gsap.fromTo(img,
-          { opacity: 0, scale: 1.04, filter: 'blur(6px)' },
-          { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.9, ease: 'power2.out', delay: 0.35 }
+          { opacity: 0, scale: 1.03 },
+          { opacity: 1, scale: 1, duration: 0.8, ease: 'power2.out', delay: 0.25 }
         );
         img.classList.add('loaded');
       };
@@ -454,13 +492,14 @@ function onSlideEnter(idx) {
   }
 
   // Particle mode per slide (gold for gold/champ slides, all team slides, and finale)
-  const isGoldSlide = [4, 8, 13, 14, 15, 16, 17, 18, 19, 20, 21].includes(idx) ||
+  const isGoldSlide = [4, 8, 12, 17, 18, 19, 20, 21, 22, 23, 24, 28, 29, 30, 34].includes(idx) ||
                       activeSlide?.classList.contains('gold-winner') ||
                       activeSlide?.querySelector('.gold-winner') ||
                       activeSlide?.querySelector('.champ-winner') ||
                       activeSlide?.querySelector('.gold-theme') ||
-                      activeSlide?.querySelector('.champ-theme');
-  if (isGoldSlide) startParticles('gold', (idx === 14 || activeSlide?.id === 'slide-champ') ? 260 : 460);
+                      activeSlide?.querySelector('.champ-theme') ||
+                      activeSlide?.id === 'slide-finale';
+  if (isGoldSlide) startParticles('gold', (idx === 18 || activeSlide?.id === 'slide-champ') ? 260 : 460);
   else startParticles('ambient', 1100);
 
   // Confetti trigger
@@ -476,28 +515,40 @@ function onSlideEnter(idx) {
   // Header aurora color shift per category
   const auroraColors = {
     5:  ['rgba(139,92,246,0.22)', null], // Cat Pts
-    6:  ['rgba(139,92,246,0.20)', null], // Siddhesh Pts
-    7:  ['rgba(139,92,246,0.20)', null], // Yashpreet Pts
-    8:  ['rgba(139,92,246,0.22)', null], // Akshata Pts
-    9:  ['rgba(0,191,165,0.18)', null],  // Cat Lead
-    10: ['rgba(0,191,165,0.18)', null],  // Siddharth Lead
-    11: ['rgba(232,146,42,0.16)', null], // Cat Ref
-    12: ['rgba(232,146,42,0.16)', null], // Siddhesh Ref
-    13: ['rgba(201,168,76,0.22)', null], // Cat Champ
-    14: ['rgba(201,168,76,0.25)', null], // Akshata Champ
-    15: ['rgba(201,168,76,0.22)', null], // Cat Team Adm (Gold)
-    16: ['rgba(201,168,76,0.24)', null], // Team Adm (Gold)
-    17: ['rgba(201,168,76,0.22)', null], // Cat Team Pct (Gold)
-    18: ['rgba(201,168,76,0.24)', null], // Team Pct (Gold)
-    19: ['rgba(201,168,76,0.22)', null], // Cat Team Pts (Gold)
-    20: ['rgba(201,168,76,0.24)', null], // Team Pts (Gold)
-    21: ['rgba(201,168,76,0.25)', null], // Finale (Gold)
+    6:  ['rgba(139,92,246,0.20)', null], // Phanindra Pts
+    7:  ['rgba(139,92,246,0.20)', null], // Preksha Pts
+    8:  ['rgba(139,92,246,0.22)', null], // Pratik Pts
+    9:  ['rgba(16,185,129,0.20)', null], // Cat Pct (Emerald)
+    10: ['rgba(16,185,129,0.18)', null], // Phanindra Pct
+    11: ['rgba(16,185,129,0.18)', null], // Preksha Pct
+    12: ['rgba(201,168,76,0.22)', null], // Pratik Pct (Gold)
+    13: ['rgba(0,191,165,0.18)', null],  // Cat Lead
+    14: ['rgba(0,191,165,0.18)', null],  // Phanindra Lead
+    15: ['rgba(232,146,42,0.16)', null], // Cat Ref
+    16: ['rgba(232,146,42,0.16)', null], // Pratik Ref
+    17: ['rgba(201,168,76,0.22)', null], // Cat Champ
+    18: ['rgba(201,168,76,0.25)', null], // Preksha Champ
+    19: ['rgba(201,168,76,0.22)', null], // Cat Team Adm (Gold)
+    20: ['rgba(201,168,76,0.24)', null], // Team B Adm (Gold)
+    21: ['rgba(201,168,76,0.22)', null], // Cat Team Pct (Gold)
+    22: ['rgba(201,168,76,0.24)', null], // Team B Pct (Gold)
+    23: ['rgba(201,168,76,0.22)', null], // Cat Team Pts (Gold)
+    24: ['rgba(201,168,76,0.24)', null], // Team B Pts (Gold)
+    25: ['rgba(59,130,246,0.22)', null], // Cat Attendance (Blue)
+    26: ['rgba(59,130,246,0.20)', null], // Parvati Attendance
+    27: ['rgba(59,130,246,0.20)', null], // Parth Attendance
+    28: ['rgba(201,168,76,0.24)', null], // Phanindra Attendance (Gold)
+    29: ['rgba(201,168,76,0.24)', null], // Cat Special Recognitions (Gold)
+    30: ['rgba(240,208,112,0.24)', null], // DBMs (Gold)
+    31: ['rgba(0,191,165,0.22)', null],  // Operations Team (Teal)
+    32: ['rgba(236,72,153,0.20)', null], // HR Team (Rose Pink)
+    33: ['rgba(56,189,248,0.22)', null], // Digital Marketing (Cyan/Sky)
+    34: ['rgba(201,168,76,0.25)', null], // Finale (Gold)
   };
   const aCol = auroraColors[idx];
-  if (aCol) {
-    gsap.to('.aurora-orb--1', { background: `radial-gradient(circle, ${aCol[0] || 'rgba(201,168,76,0.18)'} 0%, transparent 70%)`, duration: 1.5, ease: 'power2.out' });
-  } else {
-    gsap.to('.aurora-orb--1', { background: 'radial-gradient(circle, rgba(201,168,76,0.18) 0%, transparent 70%)', duration: 1.5, ease: 'power2.out' });
+  const orb1 = document.querySelector('.aurora-orb--1');
+  if (orb1) {
+    orb1.style.background = `radial-gradient(circle, ${aCol ? aCol[0] : 'rgba(201,168,76,0.18)'} 0%, transparent 70%)`;
   }
 }
 
@@ -592,6 +643,70 @@ function setupFallbacks() {
 }
 
 /* ================================================================
+   RECOGNITION PHOTOS SMART AUTO-LOADER
+   Automatically checks and displays .jpeg, .jpg, .png, .webp files
+   named after each team member (case-insensitive & multi-format)
+   ================================================================ */
+let recogPhotosInitialized = false;
+
+function initRecognitionPhotos() {
+  if (recogPhotosInitialized) return;
+  recogPhotosInitialized = true;
+
+  const recogPhotos = document.querySelectorAll('.recog-photo');
+  const EXTENSIONS = ['jpeg', 'jpg', 'png', 'webp', 'JPEG', 'JPG', 'PNG', 'WEBP'];
+
+  recogPhotos.forEach(img => {
+    if (img.dataset.loaded === 'true') return;
+    const rawName = (img.dataset.name || img.alt || '').trim();
+    if (!rawName) return;
+
+    const wrap = img.closest('.recog-photo-wrap');
+    if (!wrap) return;
+
+    // Build candidate filename formats
+    const candidates = [];
+    const baseNames = [rawName, rawName.toLowerCase(), rawName.toUpperCase()];
+    EXTENSIONS.forEach(ext => {
+      baseNames.forEach(b => {
+        const file = `${b}.${ext}`;
+        if (!candidates.includes(file)) candidates.push(file);
+      });
+    });
+
+    let index = 0;
+    function tryNext() {
+      if (index >= candidates.length) {
+        img.style.display = 'none';
+        img.classList.remove('loaded');
+        wrap.classList.remove('has-photo');
+        return;
+      }
+
+      const candidateSrc = candidates[index++];
+      const tester = new Image();
+      tester.onload = () => {
+        if (tester.naturalWidth > 0) {
+          img.src = candidateSrc;
+          img.dataset.loaded = 'true';
+          img.style.display = 'block';
+          img.classList.add('loaded');
+          wrap.classList.add('has-photo');
+        } else {
+          tryNext();
+        }
+      };
+      tester.onerror = () => {
+        tryNext();
+      };
+      tester.src = candidateSrc;
+    }
+
+    tryNext();
+  });
+}
+
+/* ================================================================
    GSAP FOOTER CATEGORY UPDATE
    ================================================================ */
 function animateFooterCat(text) {
@@ -634,6 +749,7 @@ async function init() {
   try { await preloadAll(); } catch (e) { /* continue */ }
 
   processAllWhiteBg();
+  initRecognitionPhotos();
 
   await new Promise(r => setTimeout(r, 300));
 
@@ -648,7 +764,7 @@ async function init() {
   firstSlide.classList.add('active');
 
   // Reset initial states for first slide
-  firstSlide.querySelectorAll('.gs-fade-up').forEach(el => gsap.set(el, { opacity: 0, y: 26, filter: 'blur(4px)' }));
+  firstSlide.querySelectorAll('.gs-fade-up').forEach(el => gsap.set(el, { opacity: 0, y: 26 }));
 
   // Build intro timeline with extra flair
   const tl = gsap.timeline({ defaults: { ease: 'cinematic' } });
@@ -656,8 +772,8 @@ async function init() {
   firstSlide.querySelectorAll('.gs-fade-up').forEach(el => {
     const delay = parseFloat(el.dataset.delay || '0') + 0.3;
     tl.fromTo(el,
-      { opacity: 0, y: 32, filter: 'blur(5px)' },
-      { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.8 },
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.8 },
       delay
     );
   });
